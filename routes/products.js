@@ -5,6 +5,6 @@ router.get("/", productController.getAllProducts)
 router.get("/:id", productController.getProduct)
 router.post("/", productController.createProduct)
 router.get("/search/:key", productController.searchProduct)
-router.get("/delete/:key", productController.deleteProduct)
+router.get("/delete/:id", productController.deleteProduct)
 
 module.exports = router
