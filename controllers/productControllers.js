@@ -47,5 +47,17 @@ module.exports = {
         } catch (error) {
             res.status(500).json("failed to get the product")
         }
-    }
+    },
+    deleteProduct: async (req, res) => {
+        try {
+          const deletedProduct = await Product.findByIdAndRemove(req.params.id);
+          if (deletedProduct) {
+            res.status(200).json("Product deleted successfully");
+          } else {
+            res.status(404).json("Product not found");
+          }
+        } catch (error) {
+          res.status(500).json("Failed to delete the product");
+        }
+      }
 }
