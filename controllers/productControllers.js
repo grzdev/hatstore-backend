@@ -59,5 +59,23 @@ module.exports = {
         } catch (error) {
           res.status(500).json("Failed to delete the product");
         }
-      }
+      },
+
+     editProduct: async (req, res) => {
+        try {
+            const updatedProduct = await Product.findByIdAndUpdate(
+                req.params.id,
+                req.body,
+                { new: true }
+            );
+    
+            if (!updatedProduct) {
+                return res.status(404).json("Product not found");
+            }
+    
+            res.status(200).json(updatedProduct);
+        } catch (error) {
+            res.status(500).json("Failed to edit the product");
+        }
+    }
 }
