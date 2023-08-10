@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 const ArticlesSchema = new mongoose.Schema({
     title: {type: String, required: true},
     bgCover: {type: String, required: true},
+    desc: {type: String, required: true},
     articleBody: {type: String, required: true},
     dateMade: {type: String, required: true},
     minRead: {type: String, required: true},
