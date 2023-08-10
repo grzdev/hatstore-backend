@@ -7,7 +7,9 @@ const ArticlesSchema = new mongoose.Schema({
     articleBody: {type: String, required: true},
     dateMade: {type: String, required: true},
     minRead: {type: String, required: true},
-    relatedTopics: {type: String, required: true}, 
+    relatedTopic1: {type: String, required: true}, 
+    relatedTopic2: {type: String, required: true}, 
+    relatedTopic3: {type: String, required: true}, 
     writtenBy: {type: String, required: true}, 
 }, {timestamps: true});
 
