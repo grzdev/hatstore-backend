@@ -26,28 +26,28 @@ module.exports = {
             res.status(500).json("failed to get the article")
         }
     },
-    // searchArticle: async(req, res) => {
-    //     try {
-    //         const result = await Article.aggregate(
-    //             [
-    //                 {
-    //                   $search: {
-    //                     index: "accessories",
-    //                     text: {
-    //                       query: req.params.key,
-    //                       path: {
-    //                         wildcard: "*"
-    //                       }
-    //                     }
-    //                   }
-    //                 }
-    //               ]
-    //         )
-    //         res.status(200).json(result)
-    //     } catch (error) {
-    //         res.status(500).json("failed to get the article")
-    //     }
-    // },
+    searchArticle: async(req, res) => {
+        try {
+            const result = await Article.aggregate(
+                [
+                    {
+                      $search: {
+                        index: "articles",
+                        text: {
+                          query: req.params.key,
+                          path: {
+                            wildcard: "*"
+                          }
+                        }
+                      }
+                    }
+                  ]
+            )
+            res.status(200).json(result)
+        } catch (error) {
+            res.status(500).json("failed to get the article")
+        }
+    },
     deleteArticle: async (req, res) => {
         try {
           const deletedArticle = await Article.findByIdAndRemove(req.params.id);
