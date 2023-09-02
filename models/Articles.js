@@ -6,16 +6,12 @@ const ArticlesSchema = new mongoose.Schema({
     desc: {type: String, required: true},
     subheading1: {type: String, required: true},
     body1: {type: String, required: true},
-
     subheading2: {type: String, required: true},
     body2: {type: String, required: true},
-
     subheading3: {type: String, required: true},
     body3: {type: String, required: true},
-
     subheading4: {type: String, required: false},
     body4: {type: String, required: false},
-
     subheading5: {type: String, required: false},
     body5: {type: String, required: false},
     dateMade: {type: String, required: true},
