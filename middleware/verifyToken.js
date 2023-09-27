@@ -4,7 +4,7 @@ const verifyToken = (req, res, next) => {
     const authHeader = req.headers.token;
 
     if(authHeader){
-        const token = authHeaders.split(" ")[1];
+        const token = authHeader.split(" ")[1];
 
         jwt.verify(token, process.env.JWT_PASSWORD, async (err, user) => {
             if(err){{
