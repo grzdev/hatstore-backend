@@ -40,7 +40,7 @@ module.exports = {
     },
 
     getCart: async (req, res) => {
-        const userId = req.params.id;
+        const userId = req.user.id;
         try {
             const cart = await Cart.find({userId})
             .populate('products.cartItem', "_id title price imageUrl")
