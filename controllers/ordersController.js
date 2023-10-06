@@ -2,7 +2,7 @@ const Orders = require("../models/Orders")
 
 module.exports = {
     getUserOrders: async (req, res) => {
-        const userId = req.params.id;
+        const userId = req.user.id;
 
         try {
             const userOrders = await Orders.find({userId})
