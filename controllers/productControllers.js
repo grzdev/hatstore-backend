@@ -61,7 +61,24 @@ module.exports = {
         }
       },
 
-     editProduct: async (req, res) => {
+    //  editProduct: async (req, res) => {
+    //     try {
+    //         const updatedProduct = await Product.findByIdAndUpdate(
+    //             req.params.id,
+    //             req.body,
+    //             { new: true }
+    //         );
+    
+    //         if (!updatedProduct) {
+    //             return res.status(404).json("Product not found");
+    //         }
+    
+    //         res.status(200).json(updatedProduct);
+    //     } catch (error) {
+    //         res.status(500).json("Failed to edit the product");
+    //     }
+    // }
+    editProduct: async (req, res) => {
         try {
             const updatedProduct = await Product.findByIdAndUpdate(
                 req.params.id,
@@ -70,12 +87,12 @@ module.exports = {
             );
     
             if (!updatedProduct) {
-                return res.status(404).json("Product not found");
+                return res.status(404).json({ error: "Product not found" });
             }
     
-            res.status(200).json(updatedProduct);
+            return res.status(200).json({ message: "Product edited successfully", data: updatedProduct });
         } catch (error) {
-            res.status(500).json("Failed to edit the product");
+            return res.status(500).json({ error: "Failed to edit the product" });
         }
     }
 }
