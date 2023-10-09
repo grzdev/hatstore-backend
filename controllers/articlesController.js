@@ -61,7 +61,24 @@ module.exports = {
         }
       },
 
-     editArticle: async (req, res) => {
+    //  editArticle: async (req, res) => {
+    //     try {
+    //         const updatedArticle = await Article.findByIdAndUpdate(
+    //             req.params.id,
+    //             req.body,
+    //             { new: true }
+    //         );
+    
+    //         if (!updatedArticle) {
+    //             return res.status(404).json("article not found");
+    //         }
+    
+    //         res.status(200).json(updatedArticle);
+    //     } catch (error) {
+    //         res.status(500).json("failed to edit the article");
+    //     }
+    // }
+    editArticle: async (req, res) => {
         try {
             const updatedArticle = await Article.findByIdAndUpdate(
                 req.params.id,
@@ -70,12 +87,12 @@ module.exports = {
             );
     
             if (!updatedArticle) {
-                return res.status(404).json("article not found");
+                return res.status(404).json({ error: "Article not found" });
             }
     
-            res.status(200).json(updatedArticle);
+            return res.status(200).json({ message: "Article edited successfully", data: updatedArticle });
         } catch (error) {
-            res.status(500).json("failed to edit the article");
+            return res.status(500).json({ error: "Failed to edit the article" });
         }
     }
 }
