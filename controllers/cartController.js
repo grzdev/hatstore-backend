@@ -3,8 +3,8 @@ const Cart = require("../models/Cart");
 
 module.exports = {
     addToCart: async (req, res) => {
-        const userId = req.user.id;
-        const { cartItem, quantity } = req.body;
+        // const userId = req.user.id;
+        const { userId, cartItem, quantity } = req.body;
 
         try {
           const cart = await Cart.findOne({userId})
@@ -20,7 +20,7 @@ module.exports = {
                 cart.products.push({cartItem, quantity})
             }
 
-            await cart.save();
+            await cart.save(); 
             res.status(200).json("Product added to cart")
           } else {
             const newCart = new Cart({
@@ -40,9 +40,10 @@ module.exports = {
     },
 
     getCart: async (req, res) => {
-        const userId = req.user.id;
+        // const userId = req.user.id;
+        const userId = req.params.id;
         try {
-            const cart = await Cart.find({userId: userId})
+            const cart = await Cart.find({userId})
             .populate('products.cartItem', "_id title price imageUrl")
 
             res.status(200).json(cart)
